@@ -1,9 +1,9 @@
-package com.epul.projetsimulateurpistetoken.domain;
+package com.epul.projetsimulateurpistetoken.domains;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "inscription__action", schema = "projetpermis1", catalog = "")
+@Table(name = "inscription__action", schema = "projetpermis1")
 public class EntityInscriptionAction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -22,10 +22,10 @@ public class EntityInscriptionAction {
     @Column(name = "score")
     private Integer score;
     @ManyToOne
-    @JoinColumn(name = "fk_inscription", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "fk_inscription", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
     private EntityInscription inscriptionByFkInscription;
     @ManyToOne
-    @JoinColumn(name = "fk_action", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "fk_action", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
     private EntityAction actionByFkAction;
 
     public int getId() {

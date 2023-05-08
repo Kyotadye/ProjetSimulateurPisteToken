@@ -1,11 +1,11 @@
-package com.epul.projetsimulateurpistetoken.domain;
+package com.epul.projetsimulateurpistetoken.domains;
 
 import jakarta.persistence.*;
 
 import java.sql.Date;
 
 @Entity
-@Table(name = "inscription", schema = "projetpermis1", catalog = "")
+@Table(name = "inscription", schema = "projetpermis1")
 public class EntityInscription {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -20,7 +20,12 @@ public class EntityInscription {
     @Basic
     @Column(name = "date")
     private Date date;
-
+    @ManyToOne
+    @JoinColumn(name = "fk_mission", referencedColumnName = "id", insertable = false, updatable = false)
+    private EntityMission missionByFkMission;
+    @ManyToOne
+    @JoinColumn(name = "fk_user", referencedColumnName = "NumUtil",  insertable = false, updatable = false)
+    private EntityUtilisateur utilisateurByFkUser;
     public int getId() {
         return id;
     }

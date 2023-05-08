@@ -1,23 +1,24 @@
-package com.epul.projetsimulateurpistetoken.domain;
+package com.epul.projetsimulateurpistetoken.domains;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "action__mission", schema = "projetpermis1", catalog = "")
+@Table(name = "action__mission", schema = "projetpermis1")
 @IdClass(EntityActionMissionPK.class)
 public class EntityActionMission {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "fk_action")
     private int fkAction;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "fk_mission")
     private int fkMission;
     @ManyToOne
-    @JoinColumn(name = "fk_action", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "fk_action", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
     private EntityAction actionByFkAction;
 
+    @ManyToOne
+    @JoinColumn(name = "fk_mission", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
+    private EntityMission missionByFkMission;
     public int getFkAction() {
         return fkAction;
     }

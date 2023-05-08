@@ -1,37 +1,44 @@
-package com.epul.projetsimulateurpistetoken.domain;
+package com.epul.projetsimulateurpistetoken.domains;
 
 import jakarta.persistence.*;
 
 import java.util.Collection;
 
 @Entity
-@Table(name = "action", schema = "projetpermis1", catalog = "")
+@Table(name = "action", schema = "projetpermis1")
 public class EntityAction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private int id;
+
     @Basic
-    @Column(name = "fk_action")
+    @Column(name = "fk_action", insertable = false, updatable = false)
     private Integer fkAction;
+
     @Basic
     @Column(name = "wording")
     private String wording;
+
     @Basic
     @Column(name = "scoreMinimum")
     private Integer scoreMinimum;
+
     @ManyToOne
     @JoinColumn(name = "fk_action", referencedColumnName = "id")
     private EntityAction actionByFkAction;
+
     @OneToMany(mappedBy = "actionByFkAction")
     private Collection<EntityAction> actionsById;
+
     @OneToMany(mappedBy = "actionByFkAction")
     private Collection<EntityActionMission> actionMissionsById;
+
     @OneToMany(mappedBy = "actionByFkAction")
     private Collection<EntityIndicator> indicatorsById;
+
     @OneToMany(mappedBy = "actionByFkAction")
     private Collection<EntityInscriptionAction> inscriptionActionsById;
-
     public int getId() {
         return id;
     }

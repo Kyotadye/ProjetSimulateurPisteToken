@@ -1,9 +1,9 @@
-package com.epul.projetsimulateurpistetoken.domain;
+package com.epul.projetsimulateurpistetoken.domains;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "indicator", schema = "projetpermis1", catalog = "")
+@Table(name = "indicator", schema = "projetpermis1")
 public class EntityIndicator {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -22,7 +22,7 @@ public class EntityIndicator {
     @Column(name = "valueIfUnCheck")
     private Integer valueIfUnCheck;
     @ManyToOne
-    @JoinColumn(name = "fk_action", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "fk_action", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
     private EntityAction actionByFkAction;
 
     public int getId() {

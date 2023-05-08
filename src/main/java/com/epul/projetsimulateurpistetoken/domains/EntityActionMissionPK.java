@@ -1,4 +1,4 @@
-package com.epul.projetsimulateurpistetoken.domain;
+package com.epul.projetsimulateurpistetoken.domains;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
