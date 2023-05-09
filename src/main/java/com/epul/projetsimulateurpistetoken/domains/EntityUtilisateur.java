@@ -6,7 +6,6 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "utilisateur", schema = "projetpermis1", catalog = "")
-@NamedQuery(name = "EntityUtilisateur.rechercheNom", query = "select ut  from EntityUtilisateur  ut where ut.nomUtil = ?1")
 public class EntityUtilisateur {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
