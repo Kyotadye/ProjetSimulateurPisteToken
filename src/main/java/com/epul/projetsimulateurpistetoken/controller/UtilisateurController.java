@@ -1,10 +1,7 @@
 package com.epul.projetsimulateurpistetoken.controller;
 
 import com.epul.projetsimulateurpistetoken.domains.EntityUtilisateur;
-import com.epul.projetsimulateurpistetoken.dto.Utilisateur;
 import com.epul.projetsimulateurpistetoken.mesExceptions.MonException;
-import com.epul.projetsimulateurpistetoken.repositories.EntityUtilisateurRepository;
-import com.epul.projetsimulateurpistetoken.service.IUtilisateurService;
 import com.epul.projetsimulateurpistetoken.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
