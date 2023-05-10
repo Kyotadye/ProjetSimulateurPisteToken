@@ -28,4 +28,12 @@ public class UtilisateurService implements IUtilisateurService {
 
         }
     }
+
+    public EntityUtilisateur getUtilById(int id) {
+        try{
+            return unUtilRepository.findByNumUtil(id);
+        } catch (Exception e){
+            throw new MonException("Select","sql",e.getMessage());
+        }
+    }
 }
