@@ -36,4 +36,12 @@ public class UtilisateurService implements IUtilisateurService {
             throw new MonException("Select","sql",e.getMessage());
         }
     }
+
+    public void ajouterUtilisateur(EntityUtilisateur unU){
+        try{
+        unUtilRepository.save(unU);
+    }catch (MonException e){
+            throw new MonException("Insert", "sql", e.getMessage());
+        }
+    }
 }
