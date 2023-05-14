@@ -16,5 +16,9 @@ public interface EntityUtilisateurRepository extends JpaRepository<EntityUtilisa
 
     public List<EntityUtilisateur> findAll();
     public EntityUtilisateur findByNumUtil(int id);
+
+    public void deleteByNumUtil(int id);
+
+
 }
 

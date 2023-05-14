@@ -54,4 +54,18 @@ public class UtilisateurController {
         }
     }
 
+    @DeleteMapping(value = "/delete/{id}")
+    public ResponseEntity<Void> deleteUtilisateur(@PathVariable int id)
+            throws MonException, Exception {
+        try {
+            unUtilisateurService.deleteUtilisateur(id);
+            return ResponseEntity.ok().build();
+        } catch (MonException e) {
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

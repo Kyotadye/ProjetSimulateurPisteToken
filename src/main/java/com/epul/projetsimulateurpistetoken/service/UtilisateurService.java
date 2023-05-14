@@ -4,9 +4,11 @@ import com.epul.projetsimulateurpistetoken.domains.EntityUtilisateur;
 import com.epul.projetsimulateurpistetoken.mesExceptions.MonException;
 import com.epul.projetsimulateurpistetoken.repositories.EntityUtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UtilisateurService implements IUtilisateurService {
@@ -44,4 +46,26 @@ public class UtilisateurService implements IUtilisateurService {
             throw new MonException("Insert", "sql", e.getMessage());
         }
     }
+
+    /*public void deleteUtilisateur(int id){
+        try{
+            unUtilRepository.deleteByNumUtil(id);
+        }catch (MonException e){
+            throw new MonException("Delete", "sql", e.getMessage());
+        }
+    }*/
+
+    public void deleteUtilisateur(int id) throws MonException {
+        try {
+            Optional<EntityUtilisateur> utilisateurOptional = unUtilRepository.findById(id);
+            if (utilisateurOptional.isPresent()) {
+                unUtilRepository.deleteById(id);
+            } else {
+                throw new MonException("Delete", "sql", "Utilisateur non trouvé avec l'ID : " + id);
+            }
+        } catch (DataAccessException e) {
+            throw new MonException("Delete", "sql", e.getMessage());
+        }
+    }
+
 }
