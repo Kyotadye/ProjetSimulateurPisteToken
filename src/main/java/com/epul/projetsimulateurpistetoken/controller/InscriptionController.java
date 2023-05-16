@@ -52,16 +52,4 @@ public class InscriptionController {
         return inscriptions;
     }
 
-    @GetMapping("/{inscriptionId}/actions")
-    public List<EntityAction> getInscriptionActions(@PathVariable (value="inscriptionId") int inscriptionId) {
-        List<EntityAction> actions = null;
-        try{
-            actions = uneInscriptionService.getActionsByInscription(inscriptionId);
-        } catch (MonException e) {
-            ResponseEntity.notFound().build();
-        } catch (Exception e) {
-            ResponseEntity.notFound().build();
-        }
-        return actions;
-    }
 }
