@@ -1,6 +1,8 @@
 package com.epul.projetsimulateurpistetoken.controller;
 
+import com.epul.projetsimulateurpistetoken.domains.EntityAction;
 import com.epul.projetsimulateurpistetoken.domains.EntityInscription;
+import com.epul.projetsimulateurpistetoken.domains.EntityInscriptionAction;
 import com.epul.projetsimulateurpistetoken.mesExceptions.MonException;
 import com.epul.projetsimulateurpistetoken.service.InscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +50,18 @@ public class InscriptionController {
             ResponseEntity.notFound().build();
         }
         return inscriptions;
+    }
+
+    @GetMapping("/{inscriptionId}/actions")
+    public List<EntityAction> getInscriptionActions(@PathVariable (value="inscriptionId") int inscriptionId) {
+        List<EntityAction> actions = null;
+        try{
+            actions = uneInscriptionService.getActionsByInscription(inscriptionId);
+        } catch (MonException e) {
+            ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            ResponseEntity.notFound().build();
+        }
+        return actions;
     }
 }
